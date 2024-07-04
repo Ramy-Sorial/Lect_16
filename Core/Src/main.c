@@ -110,7 +110,10 @@ int main(void)
 			HAL_UART_Transmit(&huart1, (uint8_t*) "Starting Clock..\r\n", 18, 100);
 
 		}
-		int len = sprintf((char*) num, "Clock:%d %02d:%02d:%02d Day %02d %02d/%02d/%04d\r\n", L, Clock.Hours, Clock.Minutes, Clock.Seconds, Clock.DayOfWeek, Clock.DayOfMonth, Clock.Month, Clock.Year);
+		int len = sprintf((char*) num, "Clock:%s %02d:%02d:%02d Day %02d %02d/%02d/%04d\r\n",
+					L == DS1307_OK?"OK ":"NOK",
+					Clock.Hours, Clock.Minutes, Clock.Seconds,
+					Clock.DayOfWeek, Clock.DayOfMonth, Clock.Month, Clock.Year);
 		HAL_UART_Transmit(&huart1, num, len, 200);
 		HAL_Delay(500);
 		/* USER CODE END WHILE */

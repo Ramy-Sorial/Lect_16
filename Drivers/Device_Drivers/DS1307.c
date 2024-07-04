@@ -34,6 +34,8 @@ static uint8_t BCD2Dec(uint8_t BCD)
 
 }
 
+
+
 DS1307_Stat_t DS1307_Init(DS1307_t *clock, I2C_HandleTypeDef *I2C_Bus)
 {
 	clock->bus = I2C_Bus;
